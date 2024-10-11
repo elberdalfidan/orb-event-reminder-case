@@ -71,3 +71,145 @@ Content-Type: application/json
 }
 ```
 
+## Category Endpoints
+
+### 1. Create Category
+
+#### Endpoint
+`POST /categories/`
+
+#### Description
+This endpoint allows users to create a new category for their event reminders.
+
+#### Request Example
+```bash
+POST /categories/
+Content-Type: application/json
+Authorization
+Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+    
+    {
+        "name": "TEST CATEGORY",
+        "description": "This is a test category"
+    }
+```
+
+#### Response Example
+* Status Code: 201 Created
+```json
+{
+    "id": 1,
+    "user": 1,
+    "name": "TEST CATEGORY",
+    "description": "This is a test category"
+}
+```
+* Status Code: 400 Bad Request
+```json
+{
+    "error": "Category creation failed"
+}
+```
+
+### 2. List Categories
+
+#### Endpoint
+`GET /categories/`
+
+#### Description
+This endpoint allows users to view all the categories they have created.
+
+#### Request Example
+```bash
+GET /categories/
+Content-Type: application/json
+Authorization 
+Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+```
+
+#### Response Example
+* Status Code: 200 OK
+```json
+[
+    {
+        "id": 1,
+        "user": 1,
+        "name": "TEST CATEGORY",
+        "description": "This is a test category"
+    }
+]
+```
+* Status Code: 401 Unauthorized
+```json
+{
+    "detail": "Authentication credentials were not provided."
+}
+```
+
+### 3. Update Category
+
+#### Endpoint
+`PUT /categories/<category_id>/`
+
+#### Description
+This endpoint allows users to update the details of a specific category.
+
+#### Request Example
+```bash
+PUT /categories/1/
+Content-Type: application/json
+Authorization
+Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9... 
+    {
+        "name": "UPDATED CATEGORY",
+        "description": "This is an updated category"
+    }   
+```
+
+#### Response Example
+* Status Code: 200 OK
+```json
+{
+    "id": 1,
+    "user": 1,
+    "name": "UPDATED CATEGORY",
+    "description": "This is an updated category"
+}
+```
+* Status Code: 400 Bad Request
+```json
+{
+    "error": "Category update failed"
+}
+```
+
+### 4. Delete Category
+
+#### Endpoint
+`DELETE /categories/<category_id>/`
+
+#### Description
+This endpoint allows users to delete a specific category.
+
+#### Request Example
+```bash
+DELETE /categories/1/
+Content-Type: application/json
+Authorization
+Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
+```
+
+#### Response Example
+* Status Code: 204 No Content
+```json
+{}
+```
+* Status Code: 400 Bad Request
+```json
+{
+    "error": "Category deletion failed"
+}
+```
+
+
+
