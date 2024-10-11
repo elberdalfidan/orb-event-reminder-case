@@ -211,5 +211,233 @@ Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
 }
 ```
 
+## Event Reminder Endpoints
+
+### 1. Create Event Reminder
+
+#### Endpoint
+`POST /events/`
+
+#### Description
+This endpoint allows users to create a new event reminder.
+
+#### Request Example
+```bash
+POST /events/
+Content-Type: application/json
+Authorization
+Bearer eyJ..
+        
+    {
+        "title": "Test Event",
+        "description": "This is a test event",
+        "category": 1,
+        "event_date": "2022-12-31T23:59:59Z"
+    }
+```
+
+#### Response Example
+* Status Code: 201 Created
+```json
+{
+    "id": 1,
+    "user": 1,
+    "title": "Test Event",
+    "description": "This is a test event",
+    "category": 1,
+    "event_date": "2022-12-31T23:59:59Z"
+}
+```
+* Status Code: 400 Bad Request
+```json
+{
+    "error": "Event creation failed"
+}
+```
+
+### 2. List Event Reminders
+
+#### Endpoint
+`GET /events/`
+
+#### Description
+This endpoint allows users to view all the event reminders they have created.
+
+#### Request Example
+```bash
+GET /events/
+Content-Type: application/json
+Authorization
+Bearer eyJ
+```
+
+#### Response Example
+* Status Code: 200 OK
+```json
+[
+    {
+        "id": 1,
+        "user": 1,
+        "title": "Test Event",
+        "description": "This is a test event",
+        "category": 1,
+        "event_date": "2022-12-31T23:59:59Z"
+    }
+]
+```
+* Status Code: 401 Unauthorized
+```json
+{
+    "detail": "Authentication credentials were not provided."
+}
+```
+
+### 3. Update Event Reminder
+
+#### Endpoint
+`PUT /events/<event_id>/`
+
+#### Description
+This endpoint allows users to update the details of a specific event reminder.
+
+#### Request Example
+```bash
+PUT /events/1/
+Content-Type: application/json
+Authorization
+Bearer eyJ
+    {
+        "title": "Updated Event",
+        "description": "This is an updated event",
+        "category": 1,
+        "event_date": "2022-12-31T23:59:59Z"
+    }
+```
+
+#### Response Example
+
+* Status Code: 200 OK
+```json
+{
+    "id": 1,
+    "user": 1,
+    "title": "Updated Event",
+    "description": "This is an updated event",
+    "category": 1,
+    "event_date": "2022-12-31T23:59:59Z"
+}
+```
+* Status Code: 400 Bad Request
+```json
+{
+    "error": "Event update failed"
+}
+```
+
+### 4. Delete Event Reminder
+
+#### Endpoint
+`DELETE /events/<event_id>/`
+
+#### Description
+This endpoint allows users to delete a specific event reminder.
+
+#### Request Example
+```bash
+DELETE /events/1/
+Content-Type: application/json
+Authorization
+Bearer eyJ
+```
+
+#### Response Example
+* Status Code: 204 No Content
+```json
+{}
+```
+* Status Code: 400 Bad Request
+```json
+{
+    "error": "Event deletion failed"
+}
+```
+
+### 5. Get Upcoming Event Reminders
+
+#### Endpoint
+`GET /events/upcoming/`
+
+#### Description
+This endpoint allows users to view all the upcoming event reminders they have created.
+
+#### Request Example
+```bash
+GET /events/upcoming/
+Content-Type: application/json
+Authorization
+Bearer eyJ
+```
+
+#### Response Example
+* Status Code: 200 OK
+```json
+[
+    {
+        "id": 1,
+        "user": 1,
+        "title": "Test Event",
+        "description": "This is a test event",
+        "category": 1,
+        "event_date": "2022-12-31T23:59:59Z"
+    }
+]
+```
+* Status Code: 401 Unauthorized
+```json
+{
+    "detail": "Authentication credentials were not provided."
+}
+```
+
+### 6. Get Events By Category Name
+
+#### Endpoint
+`GET /events/category/<category_name>/`
+
+#### Description
+This endpoint allows users to view all the event reminders they have created under a specific category.
+
+#### Request Example
+```bash
+GET /events/category/TEST%20CATEGORY/
+Content-Type: application/json
+Authorization
+Bearer eyJ
+```
+
+#### Response Example
+
+* Status Code: 200 OK
+```json
+[
+    {
+        "id": 1,
+        "user": 1,
+        "title": "Test Event",
+        "description": "This is a test event",
+        "category": 1,
+        "event_date": "2022-12-31T23:59:59Z"
+    }
+]
+```
+* Status Code: 401 Unauthorized
+```json
+{
+    "detail": "Authentication credentials were not provided."
+}
+```
+
+
+
 
 
