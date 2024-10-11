@@ -1,6 +1,63 @@
 # Event Reminder API
 
-This is a Django Rest Framework (DRF) based backend service that allows users to create and manage event reminders. It includes user registration and authentication using JWT (JSON Web Token). Below are the descriptions of the **login** and **register** endpoints.
+This is a Django Rest Framework (DRF) based backend service that allows users to create and manage event reminders. It includes user registration and authentication using JWT (JSON Web Token). The API provides various endpoints for users to register, log in, create, update, delete, and retrieve event reminders and categories. 
+
+## Features
+- **User Registration**: Allows new users to create an account.
+- **User Authentication**: Secure login for existing users, returning JWT for session management.
+- **Category Management**: Users can create, list, update, and delete categories for their event reminders.
+- **Event Reminders**: Users can create, list, update, delete, and filter event reminders based on categories.
+
+Below are the descriptions of the **endpoints**.
+
+## Installation via Virtual Environment
+1. Clone the repository 
+2. Create a virtual environment
+```bash
+python -m venv venv
+```
+3. Activate the virtual environment
+* Windows
+```bash
+source venv/bin/activate
+```
+* MacOS/Linux
+```bash
+. ./venv/bin/activate
+```
+4. Install the required packages
+```bash
+pip install -r requirements.txt
+```
+5. Run the migrations
+```bash
+python manage.py migrate
+```
+6. Run the server
+```bash
+python manage.py runserver
+```
+
+## Installation via Docker
+1. Clone the repository
+2. Build the Docker image
+```bash
+docker-compose up --build
+```
+
+# Postman API Documentation
+
+To help you get started with the API, you can import the Postman collection from the repository. The collection includes all the available endpoints, along with request examples and responses.
+
+### How to Import Postman Collection
+1. Open Postman.
+2. Click on the "Import" button in the top left corner.
+3. Choose the exported JSON file from your project directory.
+4. Once imported, you can explore the API endpoints and make requests directly from Postman.
+
+The Postman collection file can be found in the `docs/` directory of the project.
+
+# API Documentation
 
 ## User Authentication Endpoints
 
@@ -436,8 +493,5 @@ Bearer eyJ
     "detail": "Authentication credentials were not provided."
 }
 ```
-
-
-
 
 
